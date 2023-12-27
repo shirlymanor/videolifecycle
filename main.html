@@ -1,0 +1,164 @@
+
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="description" content="Cloudinary is an end to end media pipeline for image and video management, transformation, and delivery.">
+<meta name="viewport" content="width=device-width">
+<title>Cloudinary Video Lifecycle</title>
+<link href='https://fonts.googleapis.com/css?family=Roboto:500,400italic,300,700,500italic,400' rel='stylesheet'>
+<link href='https://plus.google.com/+Cloudinary' rel='publisher'>
+<link href='https://www.cloudinary.com/images/apple-touch-icon-57x57.png' rel='apple-touch-icon' sizes='57x57'>
+<link href='https://www.cloudinary.com/images/apple-touch-icon-114x114.png' rel='apple-touch-icon' sizes='114x114'>
+<link href='https://www.cloudinary.com/images/apple-touch-icon-72x72.png' rel='apple-touch-icon' sizes='72x72'>
+<link href='https://www.cloudinary.com/images/apple-touch-icon-144x144.png' rel='apple-touch-icon' sizes='144x144'>
+<link href='https://www.cloudinary.com/images/apple-touch-icon-60x60.png' rel='apple-touch-icon' sizes='60x60'>
+<link href='https://www.cloudinary.com/images/apple-touch-icon-120x120.png' rel='apple-touch-icon' sizes='120x120'>
+<link href='https://www.cloudinary.com/images/apple-touch-icon-76x76.png' rel='apple-touch-icon' sizes='76x76'>
+<link href='https://www.cloudinary.com/images/apple-touch-icon-152x152.png' rel='apple-touch-icon' sizes='152x152'>
+<link href='https://www.cloudinary.com/images/apple-touch-icon-180x180.png' rel='apple-touch-icon' sizes='180x180'>
+<link href='https://www.cloudinary.com/images/favicon-192x192.png' rel='icon' sizes='192x192' type='image/png'>
+<link href='https://www.cloudinary.com/images/favicon-160x160.png' rel='icon' sizes='160x160' type='image/png'>
+<link href='https://www.cloudinary.com/images/favicon-96x96.png' rel='icon' sizes='96x96' type='image/png'>
+<link href='https://www.cloudinary.com/images/favicon-16x16.png' rel='icon' sizes='16x16' type='image/png'>
+<link href='https://www.cloudinary.com/images/favicon-32x32.png' rel='icon' sizes='32x32' type='image/png'>
+<meta content='#2b5797' name='msapplication-TileColor'>
+<meta content='https://www.cloudinary.com/images/mstile-144x144.png' name='msapplication-TileImage'>
+<link rel="stylesheet" type="text/css" href="https://demo.cloudinary.com/cloudydesk/theme/css/cleanslate.css">
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://demo.cloudinary.com/cloudydesk/theme/css/bootstrap-cloudinary-theme.css">
+
+<style>
+  select {outline:none !important}
+  html,body{height:100%;overflow:hidden;background-color:black;}
+  #wrap{text-align:center;}
+  img{position:absolute;padding:0 10px;z-index:999;}
+  #wrap span{font-weight:bold;font-size:20px;color:#ff5050;padding:0 8px 0 15px;}
+  #wrap select{margin-top:10px;color:white;background:black;padding:5px 10px;border-radius:5px;font-weight:bold;font-family:roboto,arial;max-width:165px;}
+  #wrap button, #wrap img{float:right;margin:7px 10px;}
+</style>
+<script>
+function update(n,v){
+  reset(n);
+  document.getElementById('demo').style.backgroundColor=(~v.indexOf('eran2903')||~v.indexOf('sp_auto'))?"white":"#142335";
+  document.getElementById('demo').src=v
+}
+function reset(n){
+  var s=document.getElementsByTagName('select'),l=s.length;
+  for(var i=0;i<l;i++){
+    if(s[i].id!=n){
+      s[i].options[0].selected="selected"
+    }
+  }
+}
+function next(){
+  var s=document.getElementsByTagName('select'),l=s.length;
+  if(~document.getElementById('demo').src.indexOf("overview.html")){
+    s[0].options[1].selected="selected"
+    s[0].onchange()
+    return 
+  }
+  for(var i=0;i<l;i++){//debug(s[i])
+    var d=s[i].selectedIndex,o=s[i].options,g=o.length
+    if(d!=0){
+      if((d+2)<=g){
+        s[i].options[d+1].selected="selected";
+        s[i].onchange();
+        return 
+      }else if((d+2)>g && (i+2)<=l){
+        s[i+1].options[1].selected="selected"
+        s[i+1].onchange();
+        return
+      }else{
+        reset();
+        document.getElementById('demo').src='overview.html'
+        window.open('https://cloudinary.com/solutions/video')
+      }
+    }
+  }
+}
+function debug(s){
+  alert(s.id+": "+s.selectedIndex+": "+s.options[s.selectedIndex].text)
+} 
+</script>
+</head>
+<body id="cl-container">
+<!--[if lt IE 7]><p>Your browser is <em>ancient!</em> <a href="//browsehappy.com">Upgrade to a different browser</a></p><![endif]-->
+<div id="wrap" style="width: 100%;margin:0px;">
+  <select id="manage" onchange="update(this.id,this.options[this.selectedIndex].value)">
+    <option value="overview.html">MANAGE & ENRICH</option>
+    <option value="https://cloudinary.com/documentation/digital_asset_management_overview">Digital Asset Management</option>
+    <option value="https://cloudinary.com/documentation/google_ai_video_moderation_addon">AI Moderation</option>
+    <option value="https://demo.cloudinary.com/video/ai.html">AI Transcription & Tagging</option>
+    <option value="https://cloudinary.com/documentation/microsoft_azure_video_indexer_addon">AI Video Indexer</option>
+    <option value="https://cloudinary.com/documentation/video_player_events_analytics#cloudinary_video_analytics_beta">Video Analytics</option>
+  </select><span>➤</span>
+  <select id="transcoding" onchange="update(this.id,this.options[this.selectedIndex].value)">
+    <option value="overview.html">TRANSCODING</option>
+    <option value="https://cloudinaryltd.github.io/sidebyside/">Video Generation API</option>
+    <option value="https://cloudinary.com/blog/automatic_video_transcoding">Automatic Video Transcoding</option>
+    <option value="https://demo.cloudinary.com/video-comparator/">Content Aware Encoding</option>
+    <option value="https://demo.cloudinary.com/live/">Live Streaming</option>
+    <option value="https://demo.cloudinary.com/video-player/#adaptive_streaming">Adaptive Bitrate Streaming</option>
+    <option value="https://cloudinaryltd.github.io/sp_auto/">Auto Streaming Profile</option>
+    <option value="https://demo.cloudinary.com/video/#section01">Video Format Optimization</option>
+  </select><span>➤</span>
+  <select id="effects" onchange="update(this.id,this.options[this.selectedIndex].value)">
+    <option value="overview.html">VIDEO EFFECTS</option>
+    <option value="https://demo.cloudinary.com/cloudydesk/video">Transformations</option>
+    <option value="https://demo.cloudinary.com/video-compare/">Smart Cropping</option>
+    <option value="https://cloudinary.com/blog/green_screen_queen_dynamic_video_transparency_fit_for_royalty">Video Transparency</option>
+    <option value="https://cloudinary.com/documentation/video_manipulation_and_delivery#video_effects">Video Effects</option>
+    <option value="https://cloudinary.com/documentation/video_trimming_and_concatenating#cross_fade_transitions_interactive_demo">Crossfade Transitions</option>
+\  </select><span>➤</span>
+  <select id="player" onchange="update(this.id,this.options[this.selectedIndex].value)">
+    <option value="overview.html">VIDEO PLAYER</option>
+    <option value="https://studio.cloudinary.com/">Video Player Studio</option>
+    <option value="https://demo.cloudinary.com/video-player/#events_analytics">Events & Analytics</option>
+    <option value="https://demo.cloudinary.com/video-player/#playlist_recommendations">Playlists & Recommendations</option>
+    <option value="https://demo.cloudinary.com/video-player/#video_ads">Video ads</option>
+    <option value="https://codepen.io/team/Cloudinary/pres/MVZgWy">Custom Subtitles</option>
+    <option value="https://demo.cloudinary.com/cloudydesk/player-compare/compare.html">Video Player Comparison</option>
+  </select><span>➤</span>
+  <select id="interactivity" onchange="update(this.id,this.options[this.selectedIndex].value)">
+    <option value="overview.html">INTERACTIVITY</option>
+    <option value="https://smart-ai-transformations.cloudinary.com/">Video Summarization AI</option>
+    <option value="https://codepen.io/bseymour/pres/VJPQOw">360 Videos</option>
+    <option value="https://cloudinary.com/product_updates/video_progress_indicator">Video Progress Indicator</option>
+    <option value="https://res.cloudinary.com/eran2903/raw/upload/ColorShift/shift3/index_wnp37w.html">Object Color Shift</option>
+    <option value="https://cloudinary.com/blog/get_interactive_with_cloudinary_s_shoppable_video_and_video_player">Shoppable Videos</option>
+    <option value="https://res.cloudinary.com/eran2903/raw/upload/shoppable/shop11/index_ogg2wl.html">Clickable Videos</option>
+    <option value="https://res.cloudinary.com/eran2903/raw/upload/nav/chapters1/index_zitxgn.html">Automatic Video Chapters</option>
+    <option value="https://res.cloudinary.com/eran2903/raw/upload/zoom/zoom3/index_b6li1v.html">High Quality Zoom on Video</option>
+    <option value="https://res.cloudinary.com/eran2903/raw/upload/zoom7/index_ycxswh.html">4K Zoom on Video</option>
+    <option value="https://demo.cloudinary.com/product-gallery/">Product Gallery Videos</option>
+  </select><span>➤</span>
+  <select id="bestpractices" onchange="update(this.id,this.options[this.selectedIndex].value)">
+    <option value="overview.html">BEST PRACTICES</option>
+    <option value="https://cloudinary.com/blog/seven_ways_to_make_video_easier_with_a_dynamic_video_platform">Dynamic Video Platform</option>
+    <option value="https://cloudinary.com/blog/sharing_visual_information_eight_reasons_to_engage_with_your_audience_through_video">Engagement Through Video</option>
+    <option value="https://cloudinary.com/blog/creating_more_engaging_social_videos_at_scale">Video Creation at Scale</option>
+    <!--option value="https://cloudinary.com/guides/marketing-videos/three-easy-ways-to-improve-video-storytelling">Video Storytelling</option-->
+    <option value="https://cloudinary.com/blog/top_10_mistakes_in_handling_website_videos_and_how_to_solve_them">10 Video Mistakes</option>
+  </select>
+    <button class="btn btn-primary" onclick="next()">Next</button>
+    <img width="50"src="https://chriszak-res.cloudinary.com/image/upload/e_negate/Media/Design/assets/openintab.png" onclick="window.open(document.getElementById('demo').src)"/>
+</div>
+<div style="position:absolute;top:50px;left:0;right:0;bottom:0;">
+<iframe id="demo" scrolling="auto" style="background-color:#142335;margin:0;width:100%;height:100%;border:0;" src="overview.html"></iframe>
+</div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-101683856-1', 'auto');
+  ga('send', 'pageview');
+</script>
+</body>
+</html>
